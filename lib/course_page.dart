@@ -54,45 +54,63 @@ class CoursesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: .start,
-            crossAxisAlignment: .start,
-            children: [
-              Text(
-                'Courses',
-                style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                
-              ),
-              const SizedBox(height: 16,),
+      
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Container(
+            
 
-              _courseList(),
-              const SizedBox(height: 36,),
-              Text(
-                'Recent',
-                style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                
-              ),
-              const SizedBox(height: 16,),
               
-              Expanded(child: _recentCourses())
-            ],
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: Colors.white,
+        ),
+
+
+
+
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 16.0,
+                left: 16,
+                right: 16,
+                top: MediaQuery.of(context).padding.top + 20,
+              ),
+              child: Column(
+                mainAxisAlignment: .start,
+                crossAxisAlignment: .start,
+                children: [
+                  Text(
+                    'Courses',
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                    
+                  _courseList(),
+                  const SizedBox(height: 36),
+                  Text(
+                    'Recent',
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                    
+                  Expanded(child: _recentCourses()),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      
     );
   }
 
@@ -132,12 +150,10 @@ class CoursesPage extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: RecentCard(
-
-                title: currentCourse.title,
-                iconPath: currentCourse.iconPath,
-                details: currentCourse.details,
-                backgroundColor: currentCourse.backgroundColor,
-              
+              title: currentCourse.title,
+              iconPath: currentCourse.iconPath,
+              details: currentCourse.details,
+              backgroundColor: currentCourse.backgroundColor,
             ),
           );
         },
