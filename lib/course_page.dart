@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plum/Course.dart';
+import 'package:plum/Models/Course.dart';
 import 'package:plum/widgets/course_card.dart';
 import 'package:plum/widgets/recent_card.dart';
 
