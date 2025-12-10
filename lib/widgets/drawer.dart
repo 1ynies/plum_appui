@@ -12,7 +12,14 @@ class DrawerWidget extends StatefulWidget {
 class _DrawerState extends State<DrawerWidget> {
   final List<DrawerItemModel> _browsemenuitem = DrawerItemModel.menutems;
   final List<DrawerItemModel> _historymenuitem = DrawerItemModel.menuitems2;
-  final String _selectedmenu = DrawerItemModel.menutems[0].title;
+  String _selectedmenu = DrawerItemModel.menutems[0].title;
+
+  void _onMenuSelection(String title) {
+    setState(() {
+      _selectedmenu = title;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +29,6 @@ class _DrawerState extends State<DrawerWidget> {
         color: Color(0xff162456),
         borderRadius: BorderRadius.circular(30),
       ),
-
       child: Column(
         crossAxisAlignment: .start,
         children: [
@@ -32,7 +38,10 @@ class _DrawerState extends State<DrawerWidget> {
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.white.withOpacity(0.4),
-                  child: SvgPicture.asset('lib/assets/svg/user_outline.svg'),
+                  child: SvgPicture.asset(
+                    'lib/assets/svg/user_outline.svg',
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Column(
@@ -65,10 +74,18 @@ class _DrawerState extends State<DrawerWidget> {
               ],
             ),
           ),
-          
-
-          MenuButtonSection(title: 'BROWSE', menuitems: _browsemenuitem),
-          MenuButtonSection(title: 'HISTORY', menuitems: _historymenuitem)
+          MenuButtonSection(
+            title: 'BROWSE',
+            menuitems: _browsemenuitem,
+            selectedMenu: _selectedmenu,
+            onMenuPress: _onMenuSelection,
+          ),
+          MenuButtonSection(
+            title: 'HISTORY',
+            menuitems: _historymenuitem,
+            selectedMenu: _selectedmenu,
+            onMenuPress: _onMenuSelection,
+          )
         ],
       ),
     );
@@ -78,7 +95,16 @@ class _DrawerState extends State<DrawerWidget> {
 class MenuButtonSection extends StatelessWidget {
   final String title;
   final List<DrawerItemModel> menuitems;
-  MenuButtonSection({super.key, required this.title, required this.menuitems});
+  final String selectedMenu;
+  final Function(String) onMenuPress;
+
+  MenuButtonSection({
+    super.key,
+    required this.title,
+    required this.menuitems,
+    required this.selectedMenu,
+    required this.onMenuPress,
+  });
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -107,18 +133,24 @@ class MenuButtonSection extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.all(8),
-          child: Column(children: [
-            for (var menu in menuitems) ...[
-            Divider(
-              color: Colors.white.withOpacity(0.1),
-              thickness: 1,
-              height: 1,
-              indent: 16,
-              endIndent: 16,
-            ),
-            MenuRow(menu: menu),
-          ],
-          ],),
+          child: Column(
+            children: [
+              for (var menu in menuitems) ...[
+                Divider(
+                  color: Colors.white.withOpacity(0.1),
+                  thickness: 1,
+                  height: 1,
+                  indent: 16,
+                  endIndent: 16,
+                ),
+                MenuRow(
+                  menu: menu,
+                  selectedmenu: selectedMenu,
+                  onMenuPressed: () => onMenuPress(menu.title),
+                ),
+              ],
+            ],
+          ),
         )
       ],
     );

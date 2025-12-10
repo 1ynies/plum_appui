@@ -17,14 +17,15 @@ class _HomePageState extends State<HomePage>
   bool isDrawerOpen = false;
 
   final springDesc = const SpringDescription(
-    mass: 0.1,
-    stiffness: 40,
-    damping: 5,
+    mass: 0.9,
+    stiffness: 20,
+    damping: 8,
   );
 
   void onMenuPress() {
     if (isDrawerOpen) {
-      _animationController.reverse();
+      final springAnim = SpringSimulation(springDesc, 1, 0, 0);
+      _animationController.animateWith(springAnim);
     } else {
       final springAnim = SpringSimulation(springDesc, 0, 1, 0);
       _animationController.animateWith(springAnim);
@@ -38,7 +39,6 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 200),
       upperBound: 1,
       vsync: this,
     );
@@ -131,7 +131,10 @@ class _HomePageState extends State<HomePage>
                     ],
                   ),
                   child: CircleAvatar(
-                    child: SvgPicture.asset('lib/assets/svg/delete.svg'),
+                    backgroundColor: Colors.white.withOpacity(0.6),
+                    child: SvgPicture.asset(isDrawerOpen
+                        ? 'lib/assets/svg/delete.svg'
+                        : 'lib/assets/svg/menu.svg'),
                   ),
                 ),
               ),

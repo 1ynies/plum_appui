@@ -54,63 +54,55 @@ class CoursesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Container(
-            
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.white,
+          ),
 
-              
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: Colors.white,
-        ),
-
-
-
-
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: 16.0,
-                left: 16,
-                right: 16,
-                top: MediaQuery.of(context).padding.top + 20,
-              ),
-              child: Column(
-                mainAxisAlignment: .start,
-                crossAxisAlignment: .start,
-                children: [
-                  Text(
-                    'Courses',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w600,
-                      ),
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: 16.0,
+              left: 16,
+              right: 16,
+              top: MediaQuery.of(context).padding.top + 30,
+            ),
+            child: Column(
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .start,
+              children: [
+                Text(
+                  'Courses',
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                    
-                  _courseList(),
-                  const SizedBox(height: 36),
-                  Text(
-                    'Recent',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
+                ),
+                const SizedBox(height: 16),
+
+                _courseList(),
+                const SizedBox(height: 36),
+                Text(
+                  'Recent',
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                    
-                  Expanded(child: _recentCourses()),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+
+                Expanded(child: _recentCourses()),
+              ],
             ),
           ),
         ),
-      
+      ),
     );
   }
 
