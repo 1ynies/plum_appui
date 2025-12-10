@@ -15,7 +15,11 @@ A Flutter application for browsing and managing courses. This app showcases a cl
   </thead>
   <tbody>
     <tr>
-      <td><video src="lib/assets/PLum_animation.mp4" controls alt="Home Page"></td>
+      <td>
+      <video width="315" height="560" controls>
+            <source src="lib/assets/PLum_animation.mp4" type="video/mp4">
+    </video>
+      </td>
       <td><img src="lib/assets/app_icon.png" alt = "app icon"></td>
     </tr>
   </tbody>
