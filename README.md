@@ -5,25 +5,11 @@ A Flutter application for browsing and managing courses. This app showcases a cl
 ## App Preview
 
 <!-- Add a video or GIF of the app in action here -->
-
-<table>
-  <thead>
-    <tr>
-      <th>Home Page</th>
-      <th>App icon</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-      <video width="315" height="560" controls>
-            <source src="lib/assets/PLum_animation.mp4" type="video/mp4">
-    </video>
-      </td>
-      <td><img src="lib/assets/app_icon.png" alt = "app icon" width="500" height ="500"></td>
-    </tr>
-  </tbody>
-</table>
+<img src = "lib/assets/app_icon.png" width='500' height='500'>
+<img src = "lib/Screenshots/home_page.png" >
+<img src = "lib/Screenshots/menu_page.png" >
+<img src = "lib/Screenshots/menu_animation.gif" >
+<img src = "lib/Screenshots/navigation_animation.gif" >
 
 
 
